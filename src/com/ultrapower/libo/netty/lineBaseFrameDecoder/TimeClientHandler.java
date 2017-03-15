@@ -1,4 +1,4 @@
-package com.ultrapower.libo.netty.newlinerDecoder;
+package com.ultrapower.libo.netty.lineBaseFrameDecoder;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

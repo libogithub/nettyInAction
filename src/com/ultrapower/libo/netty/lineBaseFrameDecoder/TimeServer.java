@@ -1,4 +1,4 @@
-package com.ultrapower.libo.netty.newlinerDecoder;
+package com.ultrapower.libo.netty.lineBaseFrameDecoder;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -12,6 +12,14 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 
 /**
+ * Tcp采用流的方式进行消息传输，上层协议为了对消息进行区分通常采用4种方式
+ * 1:消息长度固定，当累计读取到的数据长度总和为定长的len候，就认为读取到了一个完成消息，
+ *   将计数器置位，重新读取数据。
+ * 2:将回车换行作为消息的结束符。例如FTP
+ * 3:使用特殊的符号作为分隔符，回车换行就是一种特殊的符号。
+ * 4:通过在消息头中定义长度字段来表示消息体的长度。
+ * 5:使用通信协议例如HTTP。
+ * 
  * LineBasedFrameDecoder:工作原理是依次遍历ByteBuf中的可读字节,判断是否有\n或者\r\n,如果有
  *                       就从当前位置为结束位置,从可读的索引位置到结束位置形成一行,它是以换行符
  *                       为标识的解码器，支持携带结束符或者不带结束符两种方式，同时支持最大长度

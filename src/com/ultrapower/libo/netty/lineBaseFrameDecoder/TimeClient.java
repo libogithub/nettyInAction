@@ -1,4 +1,4 @@
-package com.ultrapower.libo.netty.newlinerDecoder;
+package com.ultrapower.libo.netty.lineBaseFrameDecoder;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
